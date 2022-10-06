@@ -1,15 +1,18 @@
-#[derive(Debug)]
-struct Highlight<'document>(&'document str);
-
-fn erase(_: String) { }
+fn fizzbuzz(num: i32) -> String {
+  if num % 15 == 0 {
+    "FizzBuzz".to_string()
+  } else if num % 3 == 0 {
+    "Fizz".to_string()
+  } else if num % 5 == 0 {
+    "Buzz".to_string()
+  } else {
+    num.to_string()
+  }
+}
 
 fn main() {
-    let text = String::from("The quick brown fox jumps over the lazy dog.");
-    let fox = Highlight(&text[4..19]);
-    let dog = Highlight(&text[35..43]);
-
-    erase(text);
-
-    println!("{:?}", fox);
-    println!("{:?}", dog);
+  let result = (0..100)
+    .map(fizzbuzz)
+    .fold(String::from(""), |acc, line| format!("{}\n{}", acc, line));
+  println!("{}", result);
 }
