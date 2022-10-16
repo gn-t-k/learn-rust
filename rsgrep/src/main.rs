@@ -24,7 +24,7 @@ fn run(state: GrepArgs) {
         .path
         .par_iter()
         .for_each(|file| match read_to_string(file) {
-            Ok(content) => grep(&state, content, &file),
+            Ok(content) => grep(&state, content, file),
             Err(reason) => println!("{}", reason),
         })
 }
